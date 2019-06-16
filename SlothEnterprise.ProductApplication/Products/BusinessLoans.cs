@@ -1,4 +1,6 @@
-﻿namespace SlothEnterprise.ProductApplication.Products
+﻿using SlothEnterprise.ProductApplication.Applications;
+
+namespace SlothEnterprise.ProductApplication.Products
 {
     public class BusinessLoans : IProduct
     {
@@ -12,5 +14,10 @@
         /// Total available amount to withdraw
         /// </summary>
         public decimal LoanAmount { get; set; }
+        
+        public int Visit(ISubmitApplicationVisitor visitor, ISellerApplication application)
+        {
+            return visitor.SubmitApplication(application, this);
+        }
     }
 }
